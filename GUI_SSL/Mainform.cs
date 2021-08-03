@@ -13,10 +13,10 @@ using System.Windows.Forms;
 
 namespace GUI_SSL
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
 
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
 
@@ -110,9 +110,6 @@ namespace GUI_SSL
                 { process.StartInfo.Arguments = @"x509 -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text + " -outform PEM"; }
                 process.Start();
                 process.WaitForExit();
-                //inspectButton.Visible = true;
-                //string outputFolder = Path.GetDirectoryName(textBoxOutput.Text);
-                //process.StartInfo.Arguments = $@"pkey -in {textBoxOutput} -out C:\Users\techo\Desktop\temp.pem";
                 process.Start();
                 process.WaitForExit();
             }
@@ -254,16 +251,6 @@ namespace GUI_SSL
             }
             
         }
-
-        private void inspectButton_Click(object sender, EventArgs e)
-        {
-            InspectForm inspectForm = new InspectForm();
-            inspectForm.Icon = this.Icon;
-            inspectForm.certFile = textBoxOutput.Text;
-            inspectForm.richTextBox1.Text = File.ReadAllText(textBoxOutput.Text);
-            inspectForm.Show();
-        }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show(Path.GetDirectoryName(textBoxOutput.Text));

@@ -1,6 +1,6 @@
 ﻿namespace GUI_SSL
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Wymagana zmienna projektanta.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label4 = new System.Windows.Forms.Label();
             this.certPassTextbox = new System.Windows.Forms.TextBox();
             this.startButton = new System.Windows.Forms.Button();
@@ -45,7 +45,6 @@
             this.searchButton = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.inspectButton = new System.Windows.Forms.Button();
             this.splitCheckbox = new System.Windows.Forms.CheckBox();
             this.saveParametersCheckbox = new System.Windows.Forms.CheckBox();
             this.openSSLLocationTextbox = new System.Windows.Forms.TextBox();
@@ -77,7 +76,7 @@
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startButton.Image = ((System.Drawing.Image)(resources.GetObject("startButton.Image")));
             this.startButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.startButton.Location = new System.Drawing.Point(238, 185);
+            this.startButton.Location = new System.Drawing.Point(339, 158);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(111, 23);
             this.startButton.TabIndex = 19;
@@ -196,21 +195,6 @@
             this.listBox1.VisibleChanged += new System.EventHandler(this.listBox1_VisibleChanged);
             this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
-            // inspectButton
-            // 
-            this.inspectButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.inspectButton.Image = ((System.Drawing.Image)(resources.GetObject("inspectButton.Image")));
-            this.inspectButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.inspectButton.Location = new System.Drawing.Point(355, 185);
-            this.inspectButton.Name = "inspectButton";
-            this.inspectButton.Size = new System.Drawing.Size(95, 23);
-            this.inspectButton.TabIndex = 28;
-            this.inspectButton.Text = "ROZDZIEL";
-            this.inspectButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.inspectButton.UseVisualStyleBackColor = true;
-            this.inspectButton.Visible = false;
-            this.inspectButton.Click += new System.EventHandler(this.inspectButton_Click);
-            // 
             // splitCheckbox
             // 
             this.splitCheckbox.AutoSize = true;
@@ -263,11 +247,11 @@
             this.certPathTextbox.TabIndex = 12;
             this.certPathTextbox.Text = global::GUI_SSL.Properties.Settings.Default.certPath;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 210);
+            this.ClientSize = new System.Drawing.Size(488, 189);
             this.Controls.Add(this.saveParametersCheckbox);
             this.Controls.Add(this.splitCheckbox);
             this.Controls.Add(this.listBox1);
@@ -287,9 +271,10 @@
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.certPathTextbox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.inspectButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.MaximizeBox = false;
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenSLL GUI";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -316,7 +301,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button inspectButton;
         public System.Windows.Forms.TextBox textBoxOutput;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.CheckBox splitCheckbox;
