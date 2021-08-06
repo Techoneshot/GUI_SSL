@@ -50,6 +50,7 @@
             this.openSSLLocationTextbox = new System.Windows.Forms.TextBox();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.certPathTextbox = new System.Windows.Forms.TextBox();
+            this.removeBagCheckbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label4
@@ -198,9 +199,10 @@
             // splitCheckbox
             // 
             this.splitCheckbox.AutoSize = true;
-            this.splitCheckbox.Checked = true;
+            this.splitCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.Split;
             this.splitCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.splitCheckbox.Location = new System.Drawing.Point(164, 113);
+            this.splitCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "Split", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.splitCheckbox.Location = new System.Drawing.Point(288, 113);
             this.splitCheckbox.Name = "splitCheckbox";
             this.splitCheckbox.Size = new System.Drawing.Size(147, 17);
             this.splitCheckbox.TabIndex = 29;
@@ -211,7 +213,7 @@
             // saveParametersCheckbox
             // 
             this.saveParametersCheckbox.AutoSize = true;
-            this.saveParametersCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.saveParameters;
+            this.saveParametersCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.SaveParameters;
             this.saveParametersCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "saveParameters", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.saveParametersCheckbox.Location = new System.Drawing.Point(164, 162);
             this.saveParametersCheckbox.Name = "saveParametersCheckbox";
@@ -236,7 +238,7 @@
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.Size = new System.Drawing.Size(250, 20);
             this.textBoxOutput.TabIndex = 13;
-            this.textBoxOutput.Text = global::GUI_SSL.Properties.Settings.Default.outputPath;
+            this.textBoxOutput.Text = global::GUI_SSL.Properties.Settings.Default.OutputPath;
             // 
             // certPathTextbox
             // 
@@ -245,13 +247,26 @@
             this.certPathTextbox.Name = "certPathTextbox";
             this.certPathTextbox.Size = new System.Drawing.Size(250, 20);
             this.certPathTextbox.TabIndex = 12;
-            this.certPathTextbox.Text = global::GUI_SSL.Properties.Settings.Default.certPath;
+            this.certPathTextbox.Text = global::GUI_SSL.Properties.Settings.Default.CertPath;
+            // 
+            // removeBagCheckbox
+            // 
+            this.removeBagCheckbox.AutoSize = true;
+            this.removeBagCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.RemoveBagAttributes;
+            this.removeBagCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "RemoveBagAttributes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.removeBagCheckbox.Location = new System.Drawing.Point(164, 113);
+            this.removeBagCheckbox.Name = "removeBagCheckbox";
+            this.removeBagCheckbox.Size = new System.Drawing.Size(118, 17);
+            this.removeBagCheckbox.TabIndex = 31;
+            this.removeBagCheckbox.Text = "Usuń bag attributes";
+            this.removeBagCheckbox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 189);
+            this.Controls.Add(this.removeBagCheckbox);
             this.Controls.Add(this.saveParametersCheckbox);
             this.Controls.Add(this.splitCheckbox);
             this.Controls.Add(this.listBox1);
@@ -305,6 +320,7 @@
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.CheckBox splitCheckbox;
         private System.Windows.Forms.CheckBox saveParametersCheckbox;
+        private System.Windows.Forms.CheckBox removeBagCheckbox;
     }
 }
 

@@ -67,9 +67,9 @@ namespace GUI_SSL
                 }
                 else if (saveParametersCheckbox.Checked == false)
                 {
-                    Properties.Settings.Default.outputPath = "";
-                    Properties.Settings.Default.saveParameters = false;
-                    Properties.Settings.Default.certPath = "";
+                    Properties.Settings.Default.OutputPath = "";
+                    Properties.Settings.Default.SaveParameters = false;
+                    Properties.Settings.Default.CertPath = "";
                     Properties.Settings.Default.Save();
                 }
                 Process process = new Process();
@@ -77,30 +77,52 @@ namespace GUI_SSL
                 process.StartInfo.CreateNoWindow = false;
                 process.StartInfo.UseShellExecute = false;
                 if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == false)
-                { process.StartInfo.Arguments = @"pkcs12 -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text + " -nodes  -password pass:" + certPassTextbox.Text; }
+                { process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text} -nodes -password pass:{certPassTextbox.Text}"; }
                 else if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == true)
-                { 
+                {
                     //cert
                     process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\cert.pem -nodes -clcerts -nokeys -password pass:{certPassTextbox.Text}";
                     process.Start();
                     process.WaitForExit();
-                    process.StartInfo.Arguments = $@"x509 -in {textBoxOutput.Text}\cert.pem -out {textBoxOutput.Text}\cert.pem";
-                    process.Start();
-                    process.WaitForExit();
+                    if (removeBagCheckbox.Checked == true)
+                    {
+                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\cert.pem");
+                        var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                        newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                        newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                        newLines = newLines.Where(line => !line.Contains("subject"));
+                        newLines = newLines.Where(line => !line.Contains("issuer"));
+                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\cert.pem", newLines);
+                    }
                     //root
                     process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\root.pem -nodes -cacerts -nokeys -password pass:{certPassTextbox.Text}";
                     process.Start();
                     process.WaitForExit();
-                    process.StartInfo.Arguments = $@"x509 -in {textBoxOutput.Text}\root.pem -out {textBoxOutput.Text}\root.pem";
-                    process.Start();
-                    process.WaitForExit();
+                    if (removeBagCheckbox.Checked == true)
+                    {
+                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\root.pem");
+                        var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                        newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                        newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                        newLines = newLines.Where(line => !line.Contains("subject"));
+                        newLines = newLines.Where(line => !line.Contains("issuer"));
+                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\root.pem", newLines);
+                    }
                     //key
                     process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\key.pem -nodes -nocerts -password pass:{certPassTextbox.Text}";
                     process.Start();
                     process.WaitForExit();
-                    process.StartInfo.Arguments = $@"x509 -in {textBoxOutput.Text}\key.pem -out {textBoxOutput.Text}\key.pem";
-                    process.Start();
-                    process.WaitForExit();
+                    if (removeBagCheckbox.Checked == true)
+                    {
+                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\key.pem");
+                        var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                        newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                        newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                        newLines = newLines.Where(line => !line.Contains("subject"));
+                        newLines = newLines.Where(line => !line.Contains("issuer"));
+                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\key.pem", newLines);
+                    }
+                    return;
                 }
                 if (textBoxExtension.Text == ".p7b")
                 { process.StartInfo.Arguments = @"pkcs7 -in " + certPathTextbox.Text + " -inform DER -print_certs -out " + textBoxOutput.Text; }
@@ -110,8 +132,16 @@ namespace GUI_SSL
                 { process.StartInfo.Arguments = @"x509 -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text + " -outform PEM"; }
                 process.Start();
                 process.WaitForExit();
-                process.Start();
-                process.WaitForExit();
+                if (removeBagCheckbox.Checked == true)
+                {
+                    var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text);
+                    var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                    newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                    newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                    newLines = newLines.Where(line => !line.Contains("subject"));
+                    newLines = newLines.Where(line => !line.Contains("issuer"));
+                    System.IO.File.WriteAllLines(textBoxOutput.Text, newLines);
+                }
             }
             catch (InvalidOperationException)
             {
@@ -272,7 +302,7 @@ namespace GUI_SSL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            certPathTextbox.Text = Properties.Settings.Default.certPath;
+            certPathTextbox.Text = Properties.Settings.Default.CertPath;
             textBoxExtension.Text = Path.GetExtension(certPathTextbox.Text);
         }
 

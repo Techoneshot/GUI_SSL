@@ -38,36 +38,72 @@ namespace GUI_SSL.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string certPath {
+        public string CertPath {
             get {
-                return ((string)(this["certPath"]));
+                return ((string)(this["CertPath"]));
             }
             set {
-                this["certPath"] = value;
+                this["CertPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string outputPath {
+        public string OutputPath {
             get {
-                return ((string)(this["outputPath"]));
+                return ((string)(this["OutputPath"]));
             }
             set {
-                this["outputPath"] = value;
+                this["OutputPath"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool saveParameters {
+        public bool SaveParameters {
             get {
-                return ((bool)(this["saveParameters"]));
+                return ((bool)(this["SaveParameters"]));
             }
             set {
-                this["saveParameters"] = value;
+                this["SaveParameters"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool RemoveBagAttributes {
+            get {
+                return ((bool)(this["RemoveBagAttributes"]));
+            }
+            set {
+                this["RemoveBagAttributes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public string Ustawienie {
+            get {
+                return ((string)(this["Ustawienie"]));
+            }
+            set {
+                this["Ustawienie"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Split {
+            get {
+                return ((bool)(this["Split"]));
+            }
+            set {
+                this["Split"] = value;
             }
         }
     }
