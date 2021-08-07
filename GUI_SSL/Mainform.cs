@@ -409,5 +409,23 @@ namespace GUI_SSL
             this.Controls.Clear();
             this.InitializeComponent();
         }
+
+        private void File_Drag_Drop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            (sender as TextBox).Text = filePaths[0];
+        }
+
+        private void File_Drag_Enter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
     }
 }
