@@ -34,7 +34,8 @@ USD[![Support me](https://img.shields.io/badge/Donate-PayPal-green.svg)](https:/
 <img alt="" border="0" src="https://www.paypal.com/en_PL/i/scr/pixel.gif" width="1" height="1" />
 </form>
  
-Lista zmian:
+# Lista zmian:
+
 Wersja 1.0:
 - Konwersja do PEM
 
@@ -43,7 +44,8 @@ Wersja 1.1:
 - Tłumaczenie na niemiecki
 - Konwersja z PEM do DER
 
-Changelog:
+# Changelog:
+
 Version 1.0:
 - To PEM conversion
 
