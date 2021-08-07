@@ -9,3 +9,11 @@
 ![image](https://user-images.githubusercontent.com/51879801/128087801-cfb64c79-5ac0-4303-921d-03d2145d22f0.png)
  
  Demo: [Pobierz](https://onedrive.live.com/download?cid=459AE2D32C6AB297&resid=459AE2D32C6AB297%2175884&authkey=AKEHF-m5tSRGKq4)
+ 
+ Lista zmian:
+ Wersja 1.0:
+ - Konwersja do PEM
+
+ Wersja 1.1:
+ - Tłumaczenie na angielski
+ - Konwersja z PEM do DER
