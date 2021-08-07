@@ -16,4 +16,5 @@
 
  Wersja 1.1:
  - Tłumaczenie na angielski
+ - Tłumaczenie na niemiecki
  - Konwersja z PEM do DER
