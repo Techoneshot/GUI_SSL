@@ -51,6 +51,12 @@
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.certPathTextbox = new System.Windows.Forms.TextBox();
             this.removeBagCheckbox = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PFXradioButton = new System.Windows.Forms.RadioButton();
+            this.P7BradioButton = new System.Windows.Forms.RadioButton();
+            this.DERradioButton = new System.Windows.Forms.RadioButton();
+            this.PEMradioButton = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -77,7 +83,7 @@
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.startButton.Image = ((System.Drawing.Image)(resources.GetObject("startButton.Image")));
             this.startButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.startButton.Location = new System.Drawing.Point(339, 158);
+            this.startButton.Location = new System.Drawing.Point(339, 211);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(111, 23);
             this.startButton.TabIndex = 19;
@@ -88,7 +94,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(414, 133);
+            this.button2.Location = new System.Drawing.Point(414, 186);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(36, 24);
             this.button2.TabIndex = 18;
@@ -128,7 +134,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 139);
+            this.label2.Location = new System.Drawing.Point(45, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
             this.label2.TabIndex = 14;
@@ -202,7 +208,7 @@
             this.splitCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.Split;
             this.splitCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.splitCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "Split", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.splitCheckbox.Location = new System.Drawing.Point(288, 113);
+            this.splitCheckbox.Location = new System.Drawing.Point(288, 166);
             this.splitCheckbox.Name = "splitCheckbox";
             this.splitCheckbox.Size = new System.Drawing.Size(147, 17);
             this.splitCheckbox.TabIndex = 29;
@@ -215,7 +221,7 @@
             this.saveParametersCheckbox.AutoSize = true;
             this.saveParametersCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.SaveParameters;
             this.saveParametersCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "saveParameters", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.saveParametersCheckbox.Location = new System.Drawing.Point(164, 162);
+            this.saveParametersCheckbox.Location = new System.Drawing.Point(164, 215);
             this.saveParametersCheckbox.Name = "saveParametersCheckbox";
             this.saveParametersCheckbox.Size = new System.Drawing.Size(113, 17);
             this.saveParametersCheckbox.TabIndex = 30;
@@ -234,7 +240,7 @@
             // textBoxOutput
             // 
             this.textBoxOutput.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::GUI_SSL.Properties.Settings.Default, "outputPath", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBoxOutput.Location = new System.Drawing.Point(164, 136);
+            this.textBoxOutput.Location = new System.Drawing.Point(164, 189);
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.Size = new System.Drawing.Size(250, 20);
             this.textBoxOutput.TabIndex = 13;
@@ -254,18 +260,78 @@
             this.removeBagCheckbox.AutoSize = true;
             this.removeBagCheckbox.Checked = global::GUI_SSL.Properties.Settings.Default.RemoveBagAttributes;
             this.removeBagCheckbox.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::GUI_SSL.Properties.Settings.Default, "RemoveBagAttributes", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.removeBagCheckbox.Location = new System.Drawing.Point(164, 113);
+            this.removeBagCheckbox.Location = new System.Drawing.Point(164, 166);
             this.removeBagCheckbox.Name = "removeBagCheckbox";
             this.removeBagCheckbox.Size = new System.Drawing.Size(118, 17);
             this.removeBagCheckbox.TabIndex = 31;
             this.removeBagCheckbox.Text = "Usuń bag attributes";
             this.removeBagCheckbox.UseVisualStyleBackColor = true;
+            this.removeBagCheckbox.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.PFXradioButton);
+            this.groupBox1.Controls.Add(this.P7BradioButton);
+            this.groupBox1.Controls.Add(this.DERradioButton);
+            this.groupBox1.Controls.Add(this.PEMradioButton);
+            this.groupBox1.Location = new System.Drawing.Point(164, 113);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(216, 50);
+            this.groupBox1.TabIndex = 32;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Konwertuj na:";
+            // 
+            // PFXradioButton
+            // 
+            this.PFXradioButton.AutoSize = true;
+            this.PFXradioButton.Location = new System.Drawing.Point(165, 19);
+            this.PFXradioButton.Name = "PFXradioButton";
+            this.PFXradioButton.Size = new System.Drawing.Size(45, 17);
+            this.PFXradioButton.TabIndex = 3;
+            this.PFXradioButton.TabStop = true;
+            this.PFXradioButton.Text = "PFX";
+            this.PFXradioButton.UseVisualStyleBackColor = true;
+            // 
+            // P7BradioButton
+            // 
+            this.P7BradioButton.AutoSize = true;
+            this.P7BradioButton.Location = new System.Drawing.Point(114, 19);
+            this.P7BradioButton.Name = "P7BradioButton";
+            this.P7BradioButton.Size = new System.Drawing.Size(45, 17);
+            this.P7BradioButton.TabIndex = 2;
+            this.P7BradioButton.TabStop = true;
+            this.P7BradioButton.Text = "P7B";
+            this.P7BradioButton.UseVisualStyleBackColor = true;
+            // 
+            // DERradioButton
+            // 
+            this.DERradioButton.AutoSize = true;
+            this.DERradioButton.Location = new System.Drawing.Point(60, 19);
+            this.DERradioButton.Name = "DERradioButton";
+            this.DERradioButton.Size = new System.Drawing.Size(48, 17);
+            this.DERradioButton.TabIndex = 1;
+            this.DERradioButton.TabStop = true;
+            this.DERradioButton.Text = "DER";
+            this.DERradioButton.UseVisualStyleBackColor = true;
+            // 
+            // PEMradioButton
+            // 
+            this.PEMradioButton.AutoSize = true;
+            this.PEMradioButton.Checked = true;
+            this.PEMradioButton.Location = new System.Drawing.Point(6, 19);
+            this.PEMradioButton.Name = "PEMradioButton";
+            this.PEMradioButton.Size = new System.Drawing.Size(48, 17);
+            this.PEMradioButton.TabIndex = 0;
+            this.PEMradioButton.TabStop = true;
+            this.PEMradioButton.Text = "PEM";
+            this.PEMradioButton.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 189);
+            this.ClientSize = new System.Drawing.Size(488, 242);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.removeBagCheckbox);
             this.Controls.Add(this.saveParametersCheckbox);
             this.Controls.Add(this.splitCheckbox);
@@ -293,6 +359,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenSLL GUI";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,6 +389,11 @@
         private System.Windows.Forms.CheckBox splitCheckbox;
         private System.Windows.Forms.CheckBox saveParametersCheckbox;
         private System.Windows.Forms.CheckBox removeBagCheckbox;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton PFXradioButton;
+        private System.Windows.Forms.RadioButton P7BradioButton;
+        private System.Windows.Forms.RadioButton DERradioButton;
+        private System.Windows.Forms.RadioButton PEMradioButton;
     }
 }
 

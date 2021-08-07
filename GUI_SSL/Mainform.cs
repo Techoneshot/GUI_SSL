@@ -40,7 +40,23 @@ namespace GUI_SSL
             {
                 SaveFileDialog outputDialog = new SaveFileDialog();
                 outputDialog.Title = "Gdzie zapisać po konwersji?";
-                outputDialog.DefaultExt = ".pem";
+                if (PEMradioButton.Checked == true)
+                {
+                    outputDialog.DefaultExt = ".pem";
+                }
+                if (DERradioButton.Checked == true)
+                {
+                    outputDialog.DefaultExt = ".der";
+                }
+                if (P7BradioButton.Checked == true)
+                {
+                    outputDialog.DefaultExt = ".p7b";
+                }
+                if (PFXradioButton.Checked == true)
+                {
+                    outputDialog.DefaultExt = ".pfx";
+                }
+
                 if (outputDialog.ShowDialog() == DialogResult.OK)
                 {
                     textBoxOutput.Text = outputDialog.FileName.ToString();
@@ -76,72 +92,110 @@ namespace GUI_SSL
                 process.StartInfo.FileName = Properties.Settings.Default.OpenSSLPath;
                 process.StartInfo.CreateNoWindow = false;
                 process.StartInfo.UseShellExecute = false;
-                if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == false)
-                { process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text} -nodes -password pass:{certPassTextbox.Text}"; }
-                else if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == true)
+                //PEM
+                if (PEMradioButton.Checked == true)
                 {
-                    //cert
-                    process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\cert.pem -nodes -clcerts -nokeys -password pass:{certPassTextbox.Text}";
+                    if (textBoxExtension.Text == ".pfx")
+                    {
+                        if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == false)
+                        { 
+                            process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text} -nodes -password pass:{certPassTextbox.Text}"; 
+                        }
+                        else if (textBoxExtension.Text == ".pfx" && splitCheckbox.Checked == true)
+                        {
+                            //cert
+                            process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\cert.pem -nodes -clcerts -nokeys -password pass:{certPassTextbox.Text}";
+                            process.Start();
+                            process.WaitForExit();
+                            if (removeBagCheckbox.Checked == true)
+                            {
+                                var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\cert.pem");
+                                var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                                newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                                newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                                newLines = newLines.Where(line => !line.Contains("subject"));
+                                newLines = newLines.Where(line => !line.Contains("issuer"));
+                                System.IO.File.WriteAllLines(textBoxOutput.Text + @"\cert.pem", newLines);
+                            }
+                            //root
+                            process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\root.pem -nodes -cacerts -nokeys -password pass:{certPassTextbox.Text}";
+                            process.Start();
+                            process.WaitForExit();
+                            if (removeBagCheckbox.Checked == true)
+                            {
+                                var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\root.pem");
+                                var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                                newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                                newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                                newLines = newLines.Where(line => !line.Contains("subject"));
+                                newLines = newLines.Where(line => !line.Contains("issuer"));
+                                System.IO.File.WriteAllLines(textBoxOutput.Text + @"\root.pem", newLines);
+                            }
+                            //key
+                            process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\key.pem -nodes -nocerts -password pass:{certPassTextbox.Text}";
+                            process.Start();
+                            process.WaitForExit();
+                            if (removeBagCheckbox.Checked == true)
+                            {
+                                var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\key.pem");
+                                var newLines = oldLines.Where(line => !line.Contains("Attributes"));
+                                newLines = newLines.Where(line => !line.Contains("friendlyName"));
+                                newLines = newLines.Where(line => !line.Contains("localKeyID"));
+                                newLines = newLines.Where(line => !line.Contains("subject"));
+                                newLines = newLines.Where(line => !line.Contains("issuer"));
+                                System.IO.File.WriteAllLines(textBoxOutput.Text + @"\key.pem", newLines);
+                            }
+                            return;
+                        }
+                    }
+                    if (textBoxExtension.Text == ".p7b" && PEMradioButton.Checked == true)
+                    {
+                        process.StartInfo.Arguments = @"pkcs7 -in " + certPathTextbox.Text + " -inform DER -print_certs -out " + textBoxOutput.Text;
+                    }
+                    if ((textBoxExtension.Text == ".cer" | textBoxExtension.Text == ".der" | textBoxExtension.Text == ".crt") && PEMradioButton.Checked == true)
+                    {
+                        process.StartInfo.Arguments = @"x509 -inform der -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text;
+                    }
                     process.Start();
                     process.WaitForExit();
                     if (removeBagCheckbox.Checked == true)
                     {
-                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\cert.pem");
+                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text);
                         var newLines = oldLines.Where(line => !line.Contains("Attributes"));
                         newLines = newLines.Where(line => !line.Contains("friendlyName"));
                         newLines = newLines.Where(line => !line.Contains("localKeyID"));
                         newLines = newLines.Where(line => !line.Contains("subject"));
                         newLines = newLines.Where(line => !line.Contains("issuer"));
-                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\cert.pem", newLines);
+                        System.IO.File.WriteAllLines(textBoxOutput.Text, newLines);
                     }
-                    //root
-                    process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\root.pem -nodes -cacerts -nokeys -password pass:{certPassTextbox.Text}";
-                    process.Start();
-                    process.WaitForExit();
-                    if (removeBagCheckbox.Checked == true)
-                    {
-                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\root.pem");
-                        var newLines = oldLines.Where(line => !line.Contains("Attributes"));
-                        newLines = newLines.Where(line => !line.Contains("friendlyName"));
-                        newLines = newLines.Where(line => !line.Contains("localKeyID"));
-                        newLines = newLines.Where(line => !line.Contains("subject"));
-                        newLines = newLines.Where(line => !line.Contains("issuer"));
-                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\root.pem", newLines);
-                    }
-                    //key
-                    process.StartInfo.Arguments = $@"pkcs12 -in {certPathTextbox.Text} -out {textBoxOutput.Text}\key.pem -nodes -nocerts -password pass:{certPassTextbox.Text}";
-                    process.Start();
-                    process.WaitForExit();
-                    if (removeBagCheckbox.Checked == true)
-                    {
-                        var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text + @"\key.pem");
-                        var newLines = oldLines.Where(line => !line.Contains("Attributes"));
-                        newLines = newLines.Where(line => !line.Contains("friendlyName"));
-                        newLines = newLines.Where(line => !line.Contains("localKeyID"));
-                        newLines = newLines.Where(line => !line.Contains("subject"));
-                        newLines = newLines.Where(line => !line.Contains("issuer"));
-                        System.IO.File.WriteAllLines(textBoxOutput.Text + @"\key.pem", newLines);
-                    }
-                    return;
                 }
-                if (textBoxExtension.Text == ".p7b")
-                { process.StartInfo.Arguments = @"pkcs7 -in " + certPathTextbox.Text + " -inform DER -print_certs -out " + textBoxOutput.Text; }
-                if (textBoxExtension.Text == ".cer" | textBoxExtension.Text == ".der")
-                { process.StartInfo.Arguments = @"x509 -inform der -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text; }
-                if (textBoxExtension.Text == ".crt")
-                { process.StartInfo.Arguments = @"x509 -in " + certPathTextbox.Text + " -out " + textBoxOutput.Text + " -outform PEM"; }
-                process.Start();
-                process.WaitForExit();
-                if (removeBagCheckbox.Checked == true)
+                if (DERradioButton.Checked == true)
                 {
-                    var oldLines = System.IO.File.ReadAllLines(textBoxOutput.Text);
-                    var newLines = oldLines.Where(line => !line.Contains("Attributes"));
-                    newLines = newLines.Where(line => !line.Contains("friendlyName"));
-                    newLines = newLines.Where(line => !line.Contains("localKeyID"));
-                    newLines = newLines.Where(line => !line.Contains("subject"));
-                    newLines = newLines.Where(line => !line.Contains("issuer"));
-                    System.IO.File.WriteAllLines(textBoxOutput.Text, newLines);
+                    if (textBoxExtension.Text == ".pem")
+                    {
+                        process.StartInfo.Arguments = $@"x509 -outform der -in {certPathTextbox} -out {textBoxOutput}";
+                        process.Start();
+                        process.WaitForExit();
+                    }
                 }
+                //if (P7BradioButton.Checked == true)
+                //{
+                //    if (textBoxExtension.Text == ".pem")
+                //    {
+                //        process.StartInfo.Arguments = $@"x509 -outform der -in {certPathTextbox} -out {textBoxOutput}";
+                //        process.Start();
+                //        process.WaitForExit();
+                //    }
+                //}
+                //if (PFXradioButton.Checked == true)
+                //{
+                //    if (textBoxExtension.Text == ".pem")
+                //    {
+                //        process.StartInfo.Arguments = $@"x509 -outform der -in {certPathTextbox} -out {textBoxOutput}";
+                //        process.Start();
+                //        process.WaitForExit();
+                //    }
+                //}
             }
             catch (InvalidOperationException)
             {
@@ -264,8 +318,6 @@ namespace GUI_SSL
             return files;
         }
 
-
-
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             try
@@ -281,22 +333,45 @@ namespace GUI_SSL
             }
             
         }
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            MessageBox.Show(Path.GetDirectoryName(textBoxOutput.Text));
-        }
 
         private void textBoxExtension_TextChanged(object sender, EventArgs e)
         {
             if (textBoxExtension.Text == ".pfx")
             {
                 splitCheckbox.Visible = true;
+                removeBagCheckbox.Visible = true;
                 certPassTextbox.Visible = true;
                 label4.Visible = true;
+                PEMradioButton.Enabled = true;
+                DERradioButton.Enabled = false;
+                P7BradioButton.Enabled = false;
+                PFXradioButton.Enabled = false;
+            }
+            if (textBoxExtension.Text == ".pem")
+            {
+                splitCheckbox.Visible = false;
+                splitCheckbox.Checked = false;
+                removeBagCheckbox.Visible = false;
+                removeBagCheckbox.Checked = false;
+                certPassTextbox.Visible = false;
+                label4.Visible = false;
+                PEMradioButton.Enabled = false;
+                DERradioButton.Enabled = true;
+                P7BradioButton.Enabled = false;
+                PFXradioButton.Enabled = false;
             }
             else
             {
                 splitCheckbox.Visible = false;
+                splitCheckbox.Checked = false;
+                removeBagCheckbox.Visible = false;
+                removeBagCheckbox.Checked = false;
+                certPassTextbox.Visible = false;
+                label4.Visible = false;
+                PEMradioButton.Enabled = false;
+                DERradioButton.Enabled = false;
+                P7BradioButton.Enabled = false;
+                PFXradioButton.Enabled = false;
             }
         }
 
