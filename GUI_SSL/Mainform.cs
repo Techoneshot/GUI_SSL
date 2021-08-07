@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
+using System.Globalization;
 
 namespace GUI_SSL
 {
@@ -381,5 +383,22 @@ namespace GUI_SSL
             textBoxExtension.Text = Path.GetExtension(certPathTextbox.Text);
         }
 
+        private void ButtonPL_Click(object sender, EventArgs e)
+        {
+            CultureInfo ci = new CultureInfo("pl-PL");
+            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            this.Controls.Clear();
+            this.InitializeComponent();
+        }
+
+        private void buttonUS_Click(object sender, EventArgs e)
+        {
+            CultureInfo ci = new CultureInfo("en-US");
+            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            this.Controls.Clear();
+            this.InitializeComponent();
+        }
     }
 }

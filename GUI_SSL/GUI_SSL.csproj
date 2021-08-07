@@ -57,6 +57,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Mainform.en-US.resx">
+      <DependentUpon>Mainform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mainform.resx">
       <DependentUpon>Mainform.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GUI_SSL.ico" />
+    <None Include="Resources\en_US_flag.png" />
+    <None Include="Resources\pl_PL_flag.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\delete2.png" />
     <None Include="Resources\cancel.bmp" />
