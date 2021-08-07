@@ -24,9 +24,9 @@ ENG: Supported languages:
 
 # Wesprzyj mnie/Support me
 
-PLN[![Wesprzyj mnie](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=7VLF6Y3CSM5QA)
+PLN [![Wesprzyj mnie](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=7VLF6Y3CSM5QA)
 
-USD[![Support me](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=ZW4DM8AY3NCF2)
+USD [![Support me](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate?hosted_button_id=ZW4DM8AY3NCF2)
 
 <form action="https://www.paypal.com/donate" method="post" target="_top">
 <input type="hidden" name="hosted_button_id" value="7VLF6Y3CSM5QA" />
