@@ -119,85 +119,154 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 111</value>
+    <value>225, 111</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 13</value>
+    <value>98, 13</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Certificate password:</value>
+    <value>Zertifikatspasswort:</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="certPassTextbox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxExtension.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>69, 111</value>
+    <value>73, 111</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
+    <value>85, 13</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Certificate format:</value>
+    <value>Zertifikatsformat:</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 213</value>
+    <value>35, 213</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 13</value>
+    <value>123, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Save to:</value>
+    <value>Wo möchtest du sparen:</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 85</value>
+    <value>45, 85</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 13</value>
+    <value>113, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Location of the certificate:</value>
+    <value>Der Ort des Zertifikats:</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 40</value>
+    <value>4, 40</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 13</value>
+    <value>154, 13</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
-    <value>OpenSSL.exe location:</value>
+    <value>Speicherort von OpenSSL.exe:</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 53</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 13</value>
+    <value>127, 13</value>
   </data>
   <data name="linkLabel1.Text" xml:space="preserve">
-    <value>(Download OpenSSL)</value>
+    <value>(OpenSSL herunterladen)</value>
+  </data>
+  <data name="linkLabel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="button4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="listBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 33</value>
+    <value>7, 33</value>
   </data>
   <data name="listBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>436, 56</value>
+    <value>443, 56</value>
+  </data>
+  <data name="listBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="splitCheckbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 187</value>
-  </data>
-  <data name="splitCheckbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
+    <value>304, 187</value>
   </data>
   <data name="splitCheckbox.Text" xml:space="preserve">
-    <value>Split to cert/root/key</value>
+    <value>Aufgeteilt in cert/root/key</value>
+  </data>
+  <data name="splitCheckbox.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="saveParametersCheckbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
+    <value>152, 17</value>
   </data>
   <data name="saveParametersCheckbox.Text" xml:space="preserve">
-    <value>Remember paths</value>
+    <value>Erinnere dich an die Wege</value>
+  </data>
+  <data name="saveParametersCheckbox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="openSSLLocationTextbox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxOutput.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="certPathTextbox.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="removeBagCheckbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
+    <value>134, 17</value>
   </data>
   <data name="removeBagCheckbox.Text" xml:space="preserve">
-    <value>Delete bag attributes</value>
+    <value>Löschen bag attributes</value>
+  </data>
+  <data name="removeBagCheckbox.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PFXradioButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="P7BradioButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="DERradioButton.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PEMradioButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Convert to:</value>
+    <value>Konvertieren zu:</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="startButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -208,13 +277,16 @@
 </value>
   </data>
   <data name="startButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 232</value>
+    <value>322, 232</value>
   </data>
   <data name="startButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 23</value>
+    <value>128, 23</value>
   </data>
   <data name="startButton.Text" xml:space="preserve">
-    <value>CONVERT</value>
+    <value>KONVERTIEREN</value>
+  </data>
+  <data name="startButton.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -506,5 +578,8 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Inherit</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>

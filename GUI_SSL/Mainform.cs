@@ -400,5 +400,14 @@ namespace GUI_SSL
             this.Controls.Clear();
             this.InitializeComponent();
         }
+
+        private void buttonDE_Click(object sender, EventArgs e)
+        {
+            CultureInfo ci = new CultureInfo("de");
+            System.Threading.Thread.CurrentThread.CurrentCulture = ci;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            this.Controls.Clear();
+            this.InitializeComponent();
+        }
     }
 }
