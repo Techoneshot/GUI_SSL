@@ -44,6 +44,9 @@ Wersja 1.1:
 - Tłumaczenie na niemiecki
 - Konwersja z PEM do DER
 
+Wersja 1.2:
+- Dodano przeciąganie i upuszczanie pliku dla lokalizacji OpenSSL.exe oraz lokalizacji certyfikatu
+
 # Changelog:
 
 Version 1.0:
@@ -53,3 +56,6 @@ Version 1.1:
 - English tranlastion
 - German translation
 - From PEM to DER conversion
+
+Version 1.2:
+- Added drag & drop for OpenSSL.exe location and certificate location
